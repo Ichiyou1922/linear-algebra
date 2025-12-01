@@ -30,25 +30,7 @@ void free_vector(Vector *v) {
   free(v);
 }
 
-//0ベクトルを返す
-Vector *zero_vector(int dim) {
-  Vector *zero_vector = (Vector *)malloc(sizeof(Vector));
-  if (zero_vector == NULL) {
-    printf("Failed to allocate structure memory(zero)");
-    free(zero_vector);
-    exit(1);
-  }
-  zero_vector->dim = dim;
-  zero_vector->val = (double *)calloc(dim, sizeof(double));
-  if (zero_vector->val == NULL) {
-    printf("Failed to allocate val memory(zero)");
-    free(zero_vector->val);
-    exit(1);
-  }
-  return zero_vector;
-}
-
-void prind_vector(Vector *v) {
+void print_vector(Vector *v) {
   if (v->val == NULL) {
     printf("Data NULL");
     exit(1);
