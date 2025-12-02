@@ -69,3 +69,22 @@ y_{i}=\sum_{j=1}^{n}\mathbf{A_{ij}}x_{j} \\qquad (i=1,...,m)
 - 部分ピボット選択: その列の中で絶対値が最大の要素を持つ行を探して現在の行と入れ替える操作．->`Gaussian-Elimination`
 
 ## 固有値問題
+- 行列 $\mathbf{A}$ があるベクトル $\mathbf{x}$ に作用したとき，その方向を変えず，長さだけを $\lambda$ 倍するとき， $\mathbf{x}$ を**固有ベクトル(Eigenvector)**, $\lambda$ を**固有値(Eigenvalue)**と呼ぶ．
+```math
+\mathbf{A}\mathbf{x} = \lambda \mathbf{x} \qudad (\mathbf{x}\neq 0)
+```
+- 振動解析: 固有値は固有振動数に対応->共振対策に使用
+- 主成分分析: データが最もばらついている方向を見つける
+- Google検索: Webページの重要度->最大固有値に対応する固有ベクトル
+
+### べき乗法(Power Iteration)
+- 適当な初期ベクトル $\mathbf{x}^{(0)}$ に何度も $\mathbf{A}$ をかけていくと，ベクトルは最大固有値に対応する固有ベクトルの向きに収束する．
+
+1. 初期ベクトル $\mathbf{v}^{(0)}$ を選ぶ．ノルムは1に正規化．
+2. 以下を反復する(k=1, 2, ...)
+  - 行列ベクトル積: $\mathbf{w}=\mathbf{A}\mathbf{v}^{(k-1)}$
+  - 固有値の近似: $\mu_{k}=\frac{\mu^{(k-1)}\cdot \mathbf{w}}{\mathbf{v}^{(k-1)}\cdot \mathbf{v}^{(k-1)}}$ (レイリー商)
+  - 正規化: $\mathbf{v}^{(k)}=\frac{\mathbf{w}}{||\mathbf{w}||}$
+3. 収束判定: $\mu_{k}-\mu_{k-1} < ε$ で終了．
+
+- $\mu$ が最大固有値 $\lambda_{max}$ , $\mathbf{v}$ がその固有ベクトルに対応．
