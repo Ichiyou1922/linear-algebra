@@ -89,7 +89,9 @@ y_{i}=\sum_{j=1}^{n}\mathbf{A_{ij}}x_{j} \qquad (i=1,...,m)
 
 - $\mu$ が最大固有値 $\lambda_{max}$ , $\mathbf{v}$ がその固有ベクトルに対応．
 #### もう少し詳しく
-- $n\times n$ 行列 $A$ がn個の線形独立な固有ベクトル $\mathbf{x}_{1},\dots , \mathbf{x}_{n}$ を持ち，その固有値を $\lambda_{1}, ... , \lambda_{n}$ で表す．これは絶対値の大きさ順に並んでいるとしよう．
+- $n\times n$ 行列 $A$ がn個の線形独立な固有ベクトル 
+ $\mathbf{x_{1}},\dots , \mathbf{x_{n}}$ 
+を持ち，その固有値を $\lambda_{1}, ... , \lambda_{n}$ で表す．これは絶対値の大きさ順に並んでいるとしよう．
 ```math
 |\lambda_{1}| > |\lambda_{2}| > \dots > |\lambda_{n}|
 ```
@@ -101,10 +103,9 @@ y_{i}=\sum_{j=1}^{n}\mathbf{A_{ij}}x_{j} \qquad (i=1,...,m)
 ```
 2. Aを1回掛ける
 ```math
-\begin{equation}
-\mathbf{v}^{(1)}=\mathbf{A}\mathbf{v}^{(0)}=c_{1}\mathbf{A}\mathbf{x}_{1} + \dots + c_{n}\mathbf{A}\mathbf{x}_{n} \\
-&=c_{1}\lambda_{1}\mathbf{x}_{1} + \dots + c_{n}\lambda_{n}\mathbf{x}_{n}
-\end{equation}
+\mathbf{v}^{(1)}=\mathbf{A}\mathbf{v}^{(0)}=c_{1}\mathbf{A}\mathbf{x}_{1} + \dots + c_{n}\mathbf{A}\mathbf{x}_{n} 
+=c_{1}\lambda_{1}\mathbf{x}_{1} + \dots + c_{n}\lambda_{n}\mathbf{x}_{n}
+
 ```
 3. k回繰り返す
 ```math
