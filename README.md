@@ -170,7 +170,7 @@ c_{n}(\frac{\lambda_{n}}{\lambda_{1}})^{k}\mathbf{x}_{n}
 ```
 3. 第k列: $a_{k}$ から，それまでに作った $\mathbf{q_{1}},...,\mathbf{q_{k}}$ 方向の成分をすべて引く
 ```math
-\mathbf{u_{k}}=\mathbf{a_{k}-\sum_{j=1}^{k-1}(\mathbf{q_{j}}\cdot \mathbf{a_{k}})\mathbf{q_{j}}, \quad \mathbf{q_{k}}=\frac{\mathbf{u_{k}}}{||\mathbf{u_{k}}||}
+\mathbf{u_{k}}=\mathbf{a_{k}}-\sum_{j=1}^{k-1}(\mathbf{q_{j}}\cdot \mathbf{a_{k}})\mathbf{q_{j}}, \quad \mathbf{q_{k}}=\frac{\mathbf{u_{k}}}{||\mathbf{u_{k}}||}
 ```
 
 - $\mathbf{q_{k}}$ を並べていくと $\mathbf{Q}$ になる．
