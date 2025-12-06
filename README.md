@@ -145,3 +145,37 @@ c_{n}(\frac{\lambda_{n}}{\lambda_{1}})^{k}\mathbf{x}_{n}
 ```
 - ちなみにプログラム内で毎回 $\mathbf{v}$ を正規化していれば，分母が1になるから分子の計算だけで済む．
 - プログラミングで実装する->`power_method`
+
+
+### QR分解(QR Decomposition)
+- 任意の実正方行列 $\mathbf{A}$ は以下の形式に分解できる．
+```math
+\mathbf{A} = \mathbf{Q}\mathbf{R}
+```
+
+- Q: 直交行列-> $\mathbf{Q^{T}}\mathbf{Q}=\mathbf{I}$ 
+- R: 上三角行列
+- 回転成分 $\mathbf{Q}$ と引き伸ばし/せん断成分 $R$ に分離したい．
+
+#### グラムシュミットの直交化(Gram-Schmidt-Process)
+- $\mathbf{A}$ の各列ベクトルを直行するベクトルに作り変えていく．
+
+1. 第1列: そのまま正規化する
+```math
+\mathbf{u_{1}}=\mathbf{a_{1}}, \quad \mathbf{q_{1}}=\frac{\mathbf{u_{1}}}{||\mathbf{u_{1}}||}
+```
+2. 第2列: $\mathbf{a_{2}}$ から $\mathbf{q_{1}}$ 方向の成分を取り除く->このベクトルは $\mathbf{q_[1]}$ に直交する．
+```math
+\mathbf{u_{2}}=\mathbf{a_{2}}-(\mathbf{q_{1}}\cdot \mathbf{a_{2}})\mathbf{q_{1}}, \quad \mathbf{q_{2}}=\frac{\mathbf{u_{2}}}{||\mathbf{u_{2}}||}
+```
+3. 第k列: $a_{k}$ から，それまでに作った $\mathbf{q_{1}},...,\mathbf{q_{k}}$ 方向の成分をすべて引く
+```math
+\mathbf{u_{k}}=\mathbf{a_{k}-\sum_{j=1}^{k-1}(\mathbf{q_{j}}\cdot \mathbf{a_{k}})\mathbf{q_{j}}, \quad \mathbf{q_{k}}=\frac{\mathbf{u_{k}}}{||\mathbf{u_{k}}||}
+```
+
+- $\mathbf{q_{k}}$ を並べていくと $\mathbf{Q}$ になる．
+- 引いた係数(内積値)と正規化係数(ノルム)を記録したものが $\mathbf{R}$ になる．
+    - $\mathbf{R_{kk}}=||\mathbf{u_{k}}||$
+    - $\mathbf{R_{jk}}=\mathbf{q_{j}}\cdot \mathbf{a_{k}}\quad (j<k)$
+
+
