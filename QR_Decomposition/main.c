@@ -58,7 +58,7 @@ Matrix *create_matrix(int rows, int cols) {
 }
 
 void sme(Matrix *m, int row, int col, double value) {
-  if (row < 0 || row > m->rows || col < 0 || col > m->cols) {
+  if (row < 0 || row >= m->rows || col < 0 || col >= m->cols) {
     printf("Value Error(sme)\n");
     exit(1);
   }
@@ -92,7 +92,7 @@ double inner_product(Vector *q, Vector *a) {
   }
   double ans = 0;
   for (int i = 0; i < q->dim; i++) {
-    ans += q->value[i] + a->value[i];
+    ans += q->value[i] * a->value[i];
   }
   return ans;
 }
@@ -125,15 +125,22 @@ Matrix *mat_mult(Matrix *A, Matrix *B) {
 }
 
 void qr_decomposition(Matrix *A, Matrix *Q, Matrix *R) {
+  int n = A->rows;
+  int m = A->cols;
+
   Vector *u = create_vector(A->rows);
   Vector *a = create_vector(A->rows);
-  Vector *q = create_vector(A->rows);
+  Vector *q_col = create_vector(A->rows);
   Vector *norm_q = create_vector(A->rows);
   double r = 0;
 
   for (int k = 0; k < A->cols; k++) {
-    gmec_over(a, A, k);
-    u = a;
+    gmec_over(u, A, k);
+    
+    for (int i = 0; i < u->dim; i++) {
+      u->value[i] = a->value[i];
+    }
+
     q->value[k] = u->value[k] / norm(u);
     for (int j = 0; j < k; j++) {
       r = inner_product(q, a);
