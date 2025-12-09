@@ -191,3 +191,6 @@ c_{n}(\frac{\lambda_{n}}{\lambda_{1}})^{k}\mathbf{x}_{n}
 ```math
 \mathbf{A_{k+1}} = \mathbf{R_{k}}\mathbf{Q_{k}}
 ```
+3. この操作を繰り返すと， $\mathbf{A_{k}}$ は上三角行列となり，その対角成分に固有値が並ぶ．
+
+- `qr_decomposition`を元に，`qr-eigenvalue`を作成する．
