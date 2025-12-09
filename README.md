@@ -179,3 +179,15 @@ c_{n}(\frac{\lambda_{n}}{\lambda_{1}})^{k}\mathbf{x}_{n}
     - $\mathbf{R_{jk}}=\mathbf{q_{j}}\cdot \mathbf{a_{k}}\quad (j<k)$
 
 - 行列 $\mathbf{A}$ を受け取り， $\mathbf{Q}$ と $\mathbf{R}$ を計算するプログラムを作る->`qr_decomposition`
+
+### QR分解を用いた固有値の求め方
+- QR分解のプログラムは作ったので，これを利用して分解前の行列 $\mathbf{A}$ のすべての固有値を求めたい．
+
+1. 現在の行列 $\mathbf{A_{k}}$ をQR分解する．
+```math
+\mathbf{A_{k}} = \mathbf{Q_{k}}\mathbf{R_{k}}
+```
+2. 分解したQとRを逆順でかけたものを $\mathbf{A={k+1}}$ とする
+```math
+\mathbf{A_{k+1}} = \mathbf{R_{k}}\mathbf{Q_{k}}
+```
